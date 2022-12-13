@@ -1,1 +1,17 @@
-<p>product-list works!</p>
+
+
+<section class="banner">
+    <div class="container-fluid product">
+<ng-container *ngFor="let item of ProductList">
+<div class="card" style="width: 18rem;">
+    <img [src]="item.image" class="product-image" [alt]="item.title">
+    <div class="card-body">
+      <h4 class="card-title">{{item.category}}</h4>
+      <h6 class="card-title">{{item.title}}</h6>
+      <p class="card-text">{{item.price}}</p>
+      <a href="#" class="btn btn-primary">view</a>
+    </div>
+  </div>
+</ng-container>
+</div>
+</section>

@@ -1,5 +1,5 @@
 export class Product {
-    constructor(public id:number, public name:string, public price:number, public url:string | Blob,public description:string){
-
+    constructor(public id:number, public title:string, public price:number, public category:string | Blob
+        ,public description:string,public image:string){
     }
 }

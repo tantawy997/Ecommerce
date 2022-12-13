@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Product } from "./models/Product";
+import { Product } from '../_Model/product';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +9,14 @@ export class ProductService {
 
   constructor(public http:HttpClient) { }
 
-  function getAllProducts() {
-    return this.http.get<product>("http://localhost:4200/assets/data.json");
+
+   getAllProducts() {
+
+   return this.http.get<Product[]>("https://fakestoreapi.com/products/");
+
+  }
+
+  GetProductById(id:number){
+    return this.http.get<Product>("https://fakestoreapi.com/products/"+ id);
   }
 }
