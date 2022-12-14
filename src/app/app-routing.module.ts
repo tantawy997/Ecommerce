@@ -5,10 +5,10 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ShoppingCartComponent } from './products/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
-  {path:"", component:ProductListComponent},
-  {path:"products", component:ProductDetailsComponent},
-  {path:"Details",component:ProductDetailsComponent},
+  {path:"products", component:ProductListComponent},
+  {path:"details/:id",component:ProductDetailsComponent},
   {path:"cart", component:ShoppingCartComponent},
+  // {path:"", component:ProductListComponent},
 
 ];
 

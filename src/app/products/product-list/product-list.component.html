@@ -9,7 +9,7 @@
       <h4 class="card-title">{{item.category}}</h4>
       <h6 class="card-title">{{item.title}}</h6>
       <p class="card-text">{{item.price}}</p>
-      <a href="#" class="btn btn-primary">view</a>
+      <a class="btn btn-primary" href="/detials/1" routerLinkActive="router-link-active"  (click)="details(item.id)">view</a>
     </div>
   </div>
 </ng-container>
