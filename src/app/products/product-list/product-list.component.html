@@ -9,7 +9,7 @@
       <h4 class="card-title">{{item.category}}</h4>
       <h6 class="card-title">{{item.title}}</h6>
       <p class="card-text">{{item.price}}</p>
-      <a class="btn btn-primary"  routerLinkActive="router-link-active" style="margin: 2px;"  (click)="details(item.id)">view</a>
+      <a class="btn btn-primary"  routerLinkActive="router-link-active" style="margin: 2px; text-align: end;"  (click)="details(item.id)">view</a>
 
       <a class="btn btn-success"  routerLinkActive="router-link-active"  style="margin: 2px;" (click)="addProductToCart(item)">Add to cart</a>
     </div>
