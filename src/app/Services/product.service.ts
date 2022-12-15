@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Product } from '../_Model/product';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 storage = window.localStorage;
-
+@Output() event = new EventEmitter();
   constructor(public http:HttpClient) { }
 
 

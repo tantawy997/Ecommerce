@@ -1,1 +1,55 @@
-<p>shopping-cart works!</p>
+<div>
+    <div class="table-responsive" *ngIf="cartProducts.length >0">
+
+      <table class="table table-bordered table-hover">
+        <thead class='thead'>
+          <tr>
+            <th>S.No</th>
+            <th>Image</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quatity</th>
+            <th>Total Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of cartProducts;index as i">
+            <td>{{i+1}}</td>
+              <td>
+                  <img
+                    class="img-thumbnail .img-responsive"
+                    src="{{list.image}}"
+                    style="height:80px;width:80px;"
+                  />
+                </td>
+
+            <td>{{list.id}}</td>
+            <td>{{list.title}</td>
+            <td>{{list.price}</td>
+            <!-- <td>{{list.product_quanity}}</td> -->
+            <!-- <td>{{list.product_price * list.product_quanity}}</td> -->
+            <td>
+              <button
+                class="btn btn-danger"
+                (click)="deleteProduct(list.id)"
+              >
+                Remove Item From Cart
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"></td>
+            <td>Price {{price}}</td>
+            <td>Qty {{totalQuantity}}</td>
+            <td colspan="2">Sum {{totalPrice | currency: 'INR' }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  
