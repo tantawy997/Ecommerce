@@ -23,6 +23,15 @@ storage = window.localStorage;
   AddProduct(product:Product){
     // this.http.post<Product>("");
     this.storage.setItem("Product", JSON.stringify(product))
+  }
+  AddProducts(Product:Product){
+    this.http.post<Product[]>("https://fakestoreapi.com/products/", JSON.stringify(Product));
+  }
+  AddProducts1(product:Product[]){
+    this.storage.setItem("Products", JSON.stringify(product));
+  }
 
+  DeleteProduct(id:number){
+    this.http.delete<Product>("https://fakestoreapi.com/products/"+id);
   }
 }

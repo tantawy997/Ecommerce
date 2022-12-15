@@ -21,6 +21,8 @@ import { RouterModule } from '@angular/router';
         HttpClientModule,
         SharedModule,
         ProductsModule,
+        RouterModule,
+
     ],
     exports:[RouterModule,AppRoutingModule]
 })
