@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -18,8 +19,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
-
+    AppRoutingModule,
   ],
-  exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent]
+  exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent,RouterModule]
 })
 export class ProductsModule { }
