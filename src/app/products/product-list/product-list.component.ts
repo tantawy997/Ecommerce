@@ -33,20 +33,20 @@ this.productService.getAllProducts().subscribe(a => {
     this.selectedItem = value;
   }
 
-  // addProductToCart(product: Product): void {
-  //   const cartProducts: Product[] = this.CartServices.getCartProduct();
-  //   let productInCart = cartProducts.find((ele) => ele.id === product.id);
-  //   if (productInCart) {
-  //     productInCart.amount = this.selectedItem;
-  //     productInCart ? this.productService.AddProduct(cartProducts) : null;
-  //   } else {
-  //     cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
-  //     this.productService.AddProduct(cartProducts);
-  //     const message = `${product.name} has been added to your cart.`;
-  //     alert(message);
-  //   }
-  //   this.refresh();
-  // }
+  addProductToCart(product: Product): void {
+    const cartProducts: Product[] = this.CartServices.GetShoppingCart();
+    let productInCart = cartProducts.find((p) => p.id === product.id);
+    if (productInCart) {
+      //productInCart.amount = this.selectedItem;
+      productInCart ? this.productService.AddProducts1(cartProducts) : null;
+    } else {
+      cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
+      this.productService.AddProducts1(cartProducts);
+      const message = `${product.title} has been added to your cart.`;
+      alert(message);
+    }
+    this.refresh();
+  }
 
   refresh(): void {
     window.location.reload();
@@ -55,13 +55,12 @@ this.productService.getAllProducts().subscribe(a => {
   details(id:number){
     console.log(id);
     this.productService.GetProductById(id).subscribe(a => {
-      this.productService.GetProductById(id).subscribe(a => {
-        this.product = a;
-      })
+      this.productItem = a;
       console.log(a);
       // this.route.navigate(["details"], {relativeTo: th})
-       this.route.navigate(["details/1"]);
+
 
     })
+    console.log(this.route.navigateByUrl("/products/"+id));
   }
 }

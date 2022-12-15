@@ -9,8 +9,8 @@ storage = window.localStorage;
   constructor(public http:HttpClient) { }
 
   GetShoppingCart(){
-    // const getProduct = this.storage.getItem('products');
-    // return getProduct ? JSON.parse(getProduct) : [];
+    const getProduct = this.storage.getItem('products');
+    return getProduct ? JSON.parse(getProduct) : [];
   }
 
   ClearCart(){

@@ -6,7 +6,7 @@ import { ShoppingCartComponent } from './products/shopping-cart/shopping-cart.co
 
 const routes: Routes = [
   {path:"products", component:ProductListComponent},
-  {path:"details/:id",component:ProductDetailsComponent},
+  {path:"products/:id",component:ProductDetailsComponent},
   {path:"cart", component:ShoppingCartComponent},
   // {path:"", component:ProductListComponent},
 

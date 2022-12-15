@@ -18,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
+
   ],
-  exports:[ProductListComponent,ProductDetailsComponent]
+  exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent]
 })
 export class ProductsModule { }
