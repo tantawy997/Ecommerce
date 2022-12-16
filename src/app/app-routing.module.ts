@@ -6,8 +6,8 @@ import { ShoppingCartComponent } from './products/shopping-cart/shopping-cart.co
 
 const routes: Routes = [
   {path:"products", component:ProductListComponent},
-  {path:"products/:id",component:ProductDetailsComponent},
-  {path:"cart", component:ShoppingCartComponent},
+  {path:"products/details/:id",component:ProductDetailsComponent},
+  {path:"products/cart", component:ShoppingCartComponent},
   {path:"",component:ProductListComponent}
   // {path:"", component:ProductListComponent},
 
