@@ -15,11 +15,14 @@ export class ProductListComponent implements OnInit {
   ProductList:Product [] = [];
   @Input() productItem!: Product;
   selectedItem = "1";
+  num:number = 0;
   productCount: string[] = ['1', '2', '3', '4', '5'];
 
-  product:Product = new Product(0, "", 0, "", "", "","0");
+  productCart:Product = new Product(0, "", 0, "", "", "","0");
   constructor(public productService:ProductService, public http:HttpClient,public route:Router,public CartServices:ShoppingCartService){
   }
+
+// how to create shopping cart in angular ?
 
 
   ngOnInit(){
@@ -33,24 +36,38 @@ this.productService.getAllProducts().subscribe(a => {
     this.selectedItem = value;
   }
 
-  addProductToCart(product: Product): void {
-    const cartProducts: Product[] = this.CartServices.GetShoppingCart();
-    let productInCart = cartProducts.find((p) => p.id === product.id);
-    if (productInCart) {
-      productInCart.amount = this.selectedItem;
-      productInCart ? this.productService.AddProducts1(cartProducts) : null;
-    } else {
-      cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
-      this.productService.AddProducts1(cartProducts);
-      const message = `${product.title} has been added to your cart.`;
-      // alert(message);
-    }
 
-    this.route.navigateByUrl("/products/cart");
-
+  addProductToCart(product:Product, num:number){
+    this.CartServices.AddToCart(product).subscribe(a =>{
+      console.log(a);
+      this.productCart = a;
+      num += 1;
+      console.log(this.ProductList);
+      alert("product Added");
+    })
   }
 
-  refresh(): void {
+  AddToCart(product: Product) {
+    const cartProducts: Product[] = this.CartServices.GetShoppingCart();
+    let productInCart = cartProducts.find((ele) => ele.id === product.id);
+    console.log(product.id);
+    if (productInCart) {
+      productInCart.amount = this.selectedItem;
+      productInCart ? this.productService.AddProduct(cartProducts) : null;
+      console.log(productInCart);
+    } else {
+      cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
+      this.productService.AddProduct(cartProducts);
+      const message = `${product.title} has been added to your cart.`;
+      alert(message);
+      console.log(productInCart);
+      console.log(cartProducts);
+    }
+    this.refresh();
+  }
+
+
+  refresh() {
     window.location.reload();
   }
 
@@ -59,10 +76,11 @@ this.productService.getAllProducts().subscribe(a => {
     this.productService.GetProductById(id).subscribe(a => {
       this.productItem = a;
       console.log(a);
+      localStorage.setItem("this.productCart",this.productCart.title);
       // this.route.navigate(["details"], {relativeTo: th})
 
 
     })
-    this.route.navigateByUrl("/products/details/"+id);
+    this.route.navigateByUrl("/products/details/"+id.toString());
   }
 }

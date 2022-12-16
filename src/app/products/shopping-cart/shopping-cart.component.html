@@ -7,7 +7,9 @@
             <th>title</th>
             <th>Price</th>
             <th>Quatity</th>
-            <th>action</th>
+            <th>total Price</th>
+            <th>delete</th>
+            <th>Purchase</th>
           </tr>
         </thead>
         <tbody>
@@ -24,12 +26,19 @@
             <td>{{item.title}}</td>
             <td>{{item.price}}</td>
             <td>{{item.amount}}</td>
+            <td>{{totalPrice}}</td>
             <td>
               <button
                 class="btn btn-danger"
                 (click)="deleteProduct(item.id)"
               >
                 Remove
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-success"
+              (click)="Purchase(item.id)">
+              Purchase
               </button>
             </td>
           </tr>

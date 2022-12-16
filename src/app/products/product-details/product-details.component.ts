@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
+import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
 
 @Component({
@@ -15,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   selectedItem = "1";
   productCount: string[] = ['1', '2', '3', '4', '5'];
 
-  constructor(public http:HttpClient,public Params:ActivatedRoute, public route:Router,public productService:ProductService){
+  constructor(public cart:ShoppingCartService,public http:HttpClient,public Params:ActivatedRoute, public route:Router,public productService:ProductService){
   }
 
 
@@ -47,8 +48,12 @@ export class ProductDetailsComponent implements OnInit {
   //   this.ngUnsubscribe.complete();
   // }
 
-  addProductToCart(id:Product){
+  addProductToCart(pro:Product){
 
+    this.cart.AddToCart(pro).subscribe(a =>{
+      console.log(a);
+      localStorage.setItem("product", JSON.stringify(a));
+    });
   }
 
 }

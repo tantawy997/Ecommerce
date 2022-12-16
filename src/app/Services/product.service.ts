@@ -20,9 +20,9 @@ storage = window.localStorage;
     return this.http.get<Product>("https://fakestoreapi.com/products/"+ id);
   }
 
-  AddProduct(product:Product){
+  AddProduct(product:Product[]){
     // this.http.post<Product>("");
-    this.storage.setItem("Product", JSON.stringify(product))
+    this.storage.setItem("Products", JSON.stringify(product));
   }
   AddProducts(Product:Product){
     this.http.post<Product[]>("https://fakestoreapi.com/products/", JSON.stringify(Product));
@@ -32,6 +32,6 @@ storage = window.localStorage;
   }
 
   DeleteProduct(id:number){
-    this.http.delete<Product>("https://fakestoreapi.com/products/"+id);
+    this.http.delete<Product>("https://fakestoreapi.com/products/"+id.toString());
   }
 }

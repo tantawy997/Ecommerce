@@ -9,7 +9,6 @@ import { Product } from 'src/app/_Model/product';
 })
 export class HeaderComponent {
   amount:number = 0;
-  sum = 0;
   myStore:string = "myStore";
   cartProductList!: Product[];
   constructor(private ShoppingCart: ShoppingCartService) {}
@@ -20,12 +19,12 @@ export class HeaderComponent {
   }
 
   calculate(cart: Product[]) {
-
+    let sum = 0;
     cart.forEach((item) => {
-      this.sum += Number(item.amount);
+      sum += Number(item.amount);
     });
     const ele = document.getElementById('cartAmount') as HTMLElement;
-    ele.innerHTML = this.sum.toString();
+    ele.innerHTML = sum.toString();
   }
 
 }

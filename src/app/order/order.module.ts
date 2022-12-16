@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmationOrderComponent } from './confirmation-order/confirmation-order.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,10 @@ import { ConfirmationOrderComponent } from './confirmation-order/confirmation-or
     ConfirmationOrderComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule,
+
+  ],
+  exports:[RouterModule,ConfirmationOrderComponent]
 })
 export class OrderModule { }

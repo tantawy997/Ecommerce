@@ -1,27 +1,31 @@
-
+<router-outlet routerLink="/products/cart"></router-outlet>
 
 <section class="banner">
     <div class="container-fluid product">
-<ng-container *ngFor="let item of ProductList">
+<ng-container *ngFor="let item of ProductList";>
 <div class="card custom-card text-center" style="width: 18rem;">
     <img [src]="item.image" class="product-image" [alt]="item.title">
     <div class="card-body">
       <h4 class="card-title">{{item.category}}</h4>
-      <h6 class="card-title">{{item.title}}</h6>
+        <h6 class="card-title">{{item.title}}</h6>
       <p class="card-text">{{item.price}}</p>
 
-      <form   (ngSubmit)="addProductToCart(productItem)">
-        <select  [(ngModel)]="selectedItem" style="width:60px; margin: auto;text-align: center;" class="product-item-detail form-select" (ngModelChange)="selectedChange($event)" [ngModelOptions]="{ standalone: true }">
+      <form   (ngSubmit)="AddToCart(item)">
+        <select  [(ngModel)]="selectedItem" style="width:60px; margin: auto;text-align: center;" class="product-item-detail form-select"
+        (ngModelChange)="selectedChange($event)" [ngModelOptions]="{ standalone: true }">
       <option *ngFor="let value of productCount" value="{{ value }}">
         {{ value }}
       </option>
     </select>
+    <input class="btn-add" type="submit" value="Add to Cart" class="mt-2 btn btn-primary" />
+    <!-- <a class="btn btn-success" routerLink="/products/cart" routerLinkActive="router-link-active"  style="margin: 2px;" (click)="AddToCart(item)">Add to cart</a> -->
     </form>
-      <a class="btn btn-primary"  routerLinkActive="router-link-active" style="margin: 2px; text-align: end;"  (click)="details(item.id)">view</a>
-
-      <a class="btn btn-success"  routerLinkActive="router-link-active"  style="margin: 2px;" (click)="addProductToCart(item)">Add to cart</a>
+      <a class="btn btn-primary" routerLink="/products/details/{{item.id}}"routerLinkActive="router-link-active"
+       style="margin: 2px; text-align: end;"  (click)="details(item.id)">view</a>
     </div>
   </div>
 </ng-container>
 </div>
 </section>
+
+
