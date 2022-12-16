@@ -9,6 +9,14 @@
       <h4 class="card-title">{{item.category}}</h4>
       <h6 class="card-title">{{item.title}}</h6>
       <p class="card-text">{{item.price}}</p>
+
+      <form   (ngSubmit)="addProductToCart(productItem)">
+        <select  [(ngModel)]="selectedItem" style="width:60px; margin: auto;text-align: center;" class="product-item-detail form-select" (ngModelChange)="selectedChange($event)" [ngModelOptions]="{ standalone: true }">
+      <option *ngFor="let value of productCount" value="{{ value }}">
+        {{ value }}
+      </option>
+    </select>
+    </form>
       <a class="btn btn-primary"  routerLinkActive="router-link-active" style="margin: 2px; text-align: end;"  (click)="details(item.id)">view</a>
 
       <a class="btn btn-success"  routerLinkActive="router-link-active"  style="margin: 2px;" (click)="addProductToCart(item)">Add to cart</a>

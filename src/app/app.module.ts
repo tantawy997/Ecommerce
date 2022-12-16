@@ -19,8 +19,7 @@ import { RouterModule } from '@angular/router';
         ProductsModule,
         FormsModule,
         HttpClientModule,
-        SharedModule,
-        ProductsModule,
+        SharedModule, 
         RouterModule,
 
     ],

@@ -13,6 +13,8 @@ export class ProductDetailsComponent implements OnInit {
 
   product:Product = new Product(0, "",0,"","","");
   selectedItem = "1";
+  productCount: string[] = ['1', '2', '3', '4', '5'];
+
   constructor(public http:HttpClient,public Params:ActivatedRoute, public route:Router,public productService:ProductService){
   }
 

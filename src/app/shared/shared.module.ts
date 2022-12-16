@@ -13,8 +13,6 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    AppRoutingModule,
-
   ],
   exports:[HeaderComponent,RouterModule]
 })
