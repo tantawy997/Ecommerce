@@ -43,8 +43,10 @@ this.productService.getAllProducts().subscribe(a => {
       cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
       this.productService.AddProducts1(cartProducts);
       const message = `${product.title} has been added to your cart.`;
-      alert(message);
+      // alert(message);
     }
+
+    this.route.navigateByUrl("/products/cart");
 
   }
 
