@@ -33,9 +33,9 @@ amount : number =0;
 
 
   deleteProduct(id:number) {
-    let index = this.cartProducts.findIndex(item => item.id === id);
-    this.cartProducts.splice(index, 1);
-    this.sum();
+
+    localStorage.clear();
+    this.CartSerivces.ClearCart();
   }
 
   sum(): void {
