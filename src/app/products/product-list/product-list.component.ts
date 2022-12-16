@@ -45,7 +45,7 @@ this.productService.getAllProducts().subscribe(a => {
       const message = `${product.title} has been added to your cart.`;
       alert(message);
     }
-    this.refresh();
+
   }
 
   refresh(): void {
