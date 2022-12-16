@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
+import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
 
 @Component({
@@ -17,23 +18,19 @@ amount : number =0;
   price: number = 0;
   totalPrice: number = 0;
 
-  constructor(private _productsService: ProductService) {}
+  constructor(private _productsService: ProductService,public CartSerivces:ShoppingCartService) {}
 
   ngOnInit() {
-    this._productsService.event.subscribe(product => {
-      alert("cart-list-ngOnInit");
-      let index = -1;
-      index = this.cartProducts.findIndex(
-        p => p.id === product.id
-      );
-      if (index != -1) {
-        this.cartProducts[index].id += 1;
-      } else if (index === -1) {
-        this.cartProducts.push(product);
-      }
-      this.sum();
-    });
+
+    this.CartSerivces.GetCart().subscribe(a => {
+      this.cartProducts = a;
+      localStorage.getItem("storage");
+    })
+
+
+
   }
+
 
   deleteProduct(id:number) {
     let index = this.cartProducts.findIndex(item => item.id === id);

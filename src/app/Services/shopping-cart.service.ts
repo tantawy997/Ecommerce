@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from '../_Model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ storage = window.localStorage;
     return getProduct ? JSON.parse(getProduct) : [];
   }
 
+  GetCart(){
+    return this.http.get<Product[]>("https://fakestoreapi.com/carts/");
+
+  }
   ClearCart(){
     this.storage.clear();
   }

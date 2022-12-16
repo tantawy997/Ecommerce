@@ -1,7 +1,4 @@
-<div>
-  <!-- *ngIf="cartProducts.length >0" -->
-    <div class="table-responsive" >
-
+<section class="banner">
       <table class="table table-dark table-hover">
         <thead class='thead'>
           <tr>
@@ -11,13 +8,10 @@
             <th>Name</th>
             <th>Price</th>
             <th>Quatity</th>
-            <th>Total Price</th>
-            <!-- <th>Action</th> -->
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of cartProducts;index as i">
-            <td>{{i+1}}</td>
+          <tr *ngFor="let item of cartProducts;">
               <td>
                   <img
                     class="img-thumbnail img-responsive"
@@ -29,8 +23,7 @@
             <td>{{item.id}}</td>
             <td>{{item.title}}</td>
             <td>{{item.price}}</td>
-            <!-- <td>{{list.product_quanity}}</td> -->
-            <!-- <td>{{list.product_price * list.product_quanity}}</td> -->
+            <td>{{item.amount}}</td>
             <td>
               <button
                 class="btn btn-danger"
@@ -41,15 +34,7 @@
             </td>
           </tr>
         </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3"></td>
-            <td>Price {{price}}</td>
-            <td>Qty {{totalQuantity}}</td>
-            <td colspan="2">Sum {{totalPrice | currency: '$' }}</td>
-          </tr>
-        </tfoot>
       </table>
-    </div>
-  </div>
+
+    </section>
 
