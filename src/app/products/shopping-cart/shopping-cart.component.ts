@@ -8,7 +8,7 @@ import { Product } from 'src/app/_Model/product';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent {
-
+amount : number =0;
   // cartProducts: IProducts[] = [];
    cartProducts: Product[] = [];
 
@@ -49,14 +49,17 @@ export class ShoppingCartComponent {
       this.cartProducts.map(product => {
 
         this.price += product.price;
-        // this.totalPrice += product.price * product.product_quanity;
+         this.totalPrice += product.price * Number(product.amount);
       });
-      // for (let i = 0; i < this.cartProducts.length; i++) {
-      //   this.totalQuantity += this.cartProducts[i].product_quanity;
-      //   this.price += this.cartProducts[i].product_price;
-      //   this.totalPrice +=
-      //     this.cartProducts[i].product_price * this.cartProducts[i].product_quanity;
-      // }
     }
+  }
+
+  calculateTotal() {
+    this.totalPrice = this.cartProducts.reduce((acc, item) => {
+      this.totalPrice = parseFloat(
+        (acc + item.price * Number(item.amount)).toFixed(2)
+      );
+      return this.totalPrice;
+    }, 0);
   }
 }

@@ -14,10 +14,10 @@ export class ProductListComponent implements OnInit {
 
   ProductList:Product [] = [];
   @Input() productItem!: Product;
-  selectedItem = '1';
+  selectedItem = "1";
   productCount: string[] = ['1', '2', '3', '4', '5'];
 
-  product:Product = new Product(0, "", 0, "", "", "");
+  product:Product = new Product(0, "", 0, "", "", "","0");
   constructor(public productService:ProductService, public http:HttpClient,public route:Router,public CartServices:ShoppingCartService){
   }
 
@@ -37,7 +37,7 @@ this.productService.getAllProducts().subscribe(a => {
     const cartProducts: Product[] = this.CartServices.GetShoppingCart();
     let productInCart = cartProducts.find((p) => p.id === product.id);
     if (productInCart) {
-      //productInCart.amount = this.selectedItem;
+      productInCart.amount = this.selectedItem;
       productInCart ? this.productService.AddProducts1(cartProducts) : null;
     } else {
       cartProducts.push(Object.assign(product, { amount: this.selectedItem }));

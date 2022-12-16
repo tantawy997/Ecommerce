@@ -19,3 +19,36 @@
 a {
     color: #ffffff;
 }
+
+.cart-amount{
+  color: white;
+          padding: 1px 7px;
+          border-radius: 50%;
+          background: red;
+          font-size: 13px;
+          position: absolute;
+          font-weight: bold;
+          bottom: 15px;
+          left: 55%;
+}
+
+
+.header {
+  background-color: #02b3e4;
+  height: 5rem;
+  position: sticky;
+  color: #ffffff;
+}
+
+#cartAmount {
+  color: white;
+  padding: 1px 7px;
+  border-radius: 50%;
+  background: red;
+  font-size: 13px;
+  position: absolute;
+  font-weight: bold;
+  bottom: 15px;
+  left: 55%;
+}
+
