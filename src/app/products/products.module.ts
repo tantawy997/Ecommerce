@@ -19,7 +19,6 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     FormsModule,
     RouterModule,
-    AppRoutingModule,
   ],
   exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent,RouterModule]
 })

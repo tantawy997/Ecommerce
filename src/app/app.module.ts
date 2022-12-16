@@ -7,6 +7,7 @@ import { ProductsModule } from './products/products.module';
 import {HttpClientModule}  from "@angular/common/http";
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -16,11 +17,11 @@ import { RouterModule } from '@angular/router';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ProductsModule,
         FormsModule,
         HttpClientModule,
-        SharedModule, 
+        SharedModule,
         RouterModule,
+        ProductsModule,
 
     ],
     exports:[RouterModule,AppRoutingModule]
