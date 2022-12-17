@@ -16,7 +16,8 @@ export class ProductDetailsComponent implements OnInit {
   selectedItem = "1";
   productCount: string[] = ['1', '2', '3', '4', '5'];
 
-  constructor(public cart:ShoppingCartService,public http:HttpClient,public Params:ActivatedRoute, public route:Router,public productService:ProductService){
+  constructor(public cart:ShoppingCartService,public http:HttpClient,
+    public Params:ActivatedRoute, public route:Router,public productService:ProductService){
   }
 
 
@@ -54,6 +55,31 @@ export class ProductDetailsComponent implements OnInit {
       console.log(a);
       localStorage.setItem("product", JSON.stringify(a));
     });
+  }
+
+
+  AddToCart(product: Product) {
+
+    const cartProducts: Product[] = this.cart.GetShoppingCart();
+    let productInCart = cartProducts.find((ele) => ele.id === product.id);
+    console.log(product.id);
+    if (productInCart) {
+      productInCart.amount = this.selectedItem;
+      productInCart ? this.productService.AddProduct(cartProducts) : null;
+      if (productInCart.id === product.id){
+        cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
+        this.productService.AddProduct(cartProducts);
+      }
+      console.log(productInCart);
+    } else {
+      cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
+      this.productService.AddProduct(cartProducts);
+      const message = `${product.title} has been added to your cart.`;
+      alert(message);
+      console.log(productInCart);
+      console.log(cartProducts);
+    }
+    this.refresh();
   }
 
 }
