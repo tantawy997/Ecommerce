@@ -2,12 +2,12 @@
 Single Page Application that allows users to view a list of available products to purchase, add them to a shopping cart, and ultimately complete the checkout process.
 
 - View list of products.
+- view detailed Product.
 - Add products to cart.
 - View products in cart.
 - Delete product from cart.
 - Checkout products in cart.
 - Calculate cart total in cart.
-You can find this app working in URL: 
 
 ## Development server
 
