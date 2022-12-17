@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +13,8 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,RouterModule,FormsModule
+  ],
+  exports:[LoginComponent,RouterModule,CheckoutFormComponent]
 })
 export class UserModule { }

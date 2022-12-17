@@ -8,6 +8,7 @@ import {HttpClientModule}  from "@angular/common/http";
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { OrderModule } from './order/order.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
     declarations: [
@@ -23,8 +24,8 @@ import { OrderModule } from './order/order.module';
         SharedModule,
         ProductsModule,
         OrderModule,
-
+        UserModule,
     ],
-    exports:[RouterModule,AppRoutingModule]
+    exports:[AppRoutingModule]
 })
 export class AppModule { }

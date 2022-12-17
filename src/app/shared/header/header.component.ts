@@ -10,6 +10,7 @@ import { Product } from 'src/app/_Model/product';
 export class HeaderComponent {
   amount:number = 0;
   myStore:string = "myStore";
+  flage:boolean = false;
   cartProductList!: Product[];
   constructor(private ShoppingCart: ShoppingCartService) {}
 
@@ -27,4 +28,11 @@ export class HeaderComponent {
     ele.innerHTML = sum.toString();
   }
 
+  login(){
+    if (!localStorage.getItem("username")){
+      this.flage = true;
+    }else {
+      this.flage = false;
+    }
+  }
 }
