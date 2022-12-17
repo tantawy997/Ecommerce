@@ -47,9 +47,6 @@ amount : number = 0;
     alert("success");
     location.reload();
     this.Router.navigateByUrl(`/`);
-
-
-
   }
 
   deleteProduct(id:number) {

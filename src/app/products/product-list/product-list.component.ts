@@ -48,12 +48,17 @@ this.productService.getAllProducts().subscribe(a => {
   }
 
   AddToCart(product: Product) {
+
     const cartProducts: Product[] = this.CartServices.GetShoppingCart();
     let productInCart = cartProducts.find((ele) => ele.id === product.id);
     console.log(product.id);
     if (productInCart) {
       productInCart.amount = this.selectedItem;
       productInCart ? this.productService.AddProduct(cartProducts) : null;
+      if (productInCart.id === product.id){
+        cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
+        this.productService.AddProduct(cartProducts);
+      }
       console.log(productInCart);
     } else {
       cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
