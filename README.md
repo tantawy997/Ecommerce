@@ -1,6 +1,13 @@
 # MyApp
+Single Page Application that allows users to view a list of available products to purchase, add them to a shopping cart, and ultimately complete the checkout process.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+- View list of products.
+- Add products to cart.
+- View products in cart.
+- Delete product from cart.
+- Checkout products in cart.
+- Calculate cart total in cart.
+You can find this app working in URL: 
 
 ## Development server
 
