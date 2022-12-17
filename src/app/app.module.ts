@@ -25,7 +25,8 @@ import { UserModule } from './user/user.module';
         ProductsModule,
         OrderModule,
         UserModule,
+
     ],
-    exports:[AppRoutingModule]
+    exports:[]
 })
 export class AppModule { }

@@ -24,7 +24,7 @@
           <a routerLink="products/cart" >Cart <i class="fa fa-shopping-cart"></i> <span  id="cartAmount" #cartAmount>{{0}}</span></a>
         </li>
         <li class="navbar-item">
-          <a routerLink="login" *ngIf="flage" class="nav-link" >login</a>
+          <a routerLink="login" *ngIf="!flage" class="nav-link" >login</a>
         </li>
       </ul>
     </div>

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
 import { UserModule } from '../user/user.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,7 @@ import { UserModule } from '../user/user.module';
   imports: [
     CommonModule,
     RouterModule,
-    UserModule
+    UserModule,
   ],
   exports:[HeaderComponent,RouterModule]
 })
