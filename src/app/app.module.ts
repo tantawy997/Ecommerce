@@ -26,7 +26,8 @@ import { UserModule } from './user/user.module';
         OrderModule,
         UserModule,
         RouterModule,
-        AppRoutingModule
+        
+
 
     ],
     exports:[RouterModule]
