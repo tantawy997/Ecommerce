@@ -30,6 +30,5 @@ import { UserLoginComponent } from './components/user-login/user-login.component
         RouterModule,
 
     ],
-    exports:[RouterModule]
 })
 export class AppModule { }
