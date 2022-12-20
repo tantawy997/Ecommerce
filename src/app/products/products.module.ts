@@ -19,7 +19,6 @@ import { ProductsRoutingModule } from './Products-routing.module';
     CommonModule,
     FormsModule,
     RouterModule,
-    ProductsRoutingModule
   ],
   exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent,RouterModule]
 })

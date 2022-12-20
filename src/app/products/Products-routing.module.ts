@@ -10,10 +10,10 @@ const routes: Routes = [
      path: 'products', component:ProductListComponent
   },
   {
-    path: "products/details/:id",component:ProductDetailsComponent
+    path: "details/:id",component:ProductDetailsComponent
   },
   {
-    path:"Products/cart",component:ShoppingCartComponent
+    path:"cart",component:ShoppingCartComponent
   }
 ];
 
