@@ -9,12 +9,10 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { OrderModule } from './order/order.module';
 import { UserModule } from './user/user.module';
-import { UserLoginComponent } from './components/user-login/user-login.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        UserLoginComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

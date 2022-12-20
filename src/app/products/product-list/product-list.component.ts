@@ -86,6 +86,6 @@ this.productService.getAllProducts().subscribe(a => {
 
 
     })
-    this.route.navigateByUrl("/products/details/"+id.toString());
+    return this.route.navigateByUrl("/products/details/"+id);
   }
 }

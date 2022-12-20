@@ -4,6 +4,7 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UserRoutingModule } from './User-Routing.Module';
 
 
 
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent
   ],
   imports: [
-    CommonModule,RouterModule,FormsModule
+    CommonModule,RouterModule,FormsModule,UserRoutingModule
   ],
   exports:[LoginComponent,RouterModule,CheckoutFormComponent]
 })

@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ProductsRoutingModule } from './Products-routing.module';
 
 
 
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
+    ProductsRoutingModule
   ],
   exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent,RouterModule]
 })
