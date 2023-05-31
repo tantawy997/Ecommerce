@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
+import { rate } from 'src/app/_Model/rate';
 
 @Component({
   selector: 'app-product-details',
@@ -12,8 +13,9 @@ import { Product } from 'src/app/_Model/product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-
-  product:Product = new Product(0, "",0,"","","");
+  rating:rate= new rate(0,0);
+  loading:boolean = false;
+  product:Product = new Product(0, "",0,"","","",this.rating,0,'0');
   selectedItem = "1";
   productCount: string[] = ['1', '2', '3', '4', '5'];
 
@@ -29,6 +31,7 @@ export class ProductDetailsComponent implements OnInit {
       console.log(this.product.id);
       this.productService.GetProductById(this.product.id).subscribe(prod => {
         this.product = prod;
+        this.loading = true;
       })
     })
 

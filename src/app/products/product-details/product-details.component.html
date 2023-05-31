@@ -1,21 +1,31 @@
 
 
 <div class="product-item">
-    <img class="product-item__image" [src]="product.image" />
+    <img class="product-item__image" *ngIf="loading" [src]="product.image" />
     <div class="product-item__info">
         <h2>{{ product.title }}</h2>
         <p class="product-item__description">{{ product.description }}</p>
         <p class="price">{{ product.price | currency: "EUR" }}</p>
         <form (ngSubmit)="addProductToCart(product)">
-            <select [(ngModel)]="selectedItem" style="width: 100px" class="product-item-detail form-select" (ngModelChange)="selectedChange($event)" [ngModelOptions]="{ standalone: true }">
+            <select [(ngModel)]="selectedItem" style="width: 100px" class="product-item-detail form-select"
+            (ngModelChange)="selectedChange($event)" [ngModelOptions]="{ standalone: true }">
         <option *ngFor="let value of productCount" value="{{ value }}">
           {{ value }}
         </option>
       </select>
+      <p>{{product.category}}</p>
+      <p>{{product.amount}}</p>
+      <p>{{product.rating.count}}</p>
+      <p>{{product.rating.rate}}</p>
+
+
             <input class="btn-add" type="submit" value="Add to Cart" class="mt-2 btn btn-primary" />
         </form>
         <div>
             <a class="back-button btn btn-info"  routerLink="/">&lt; Back to product list</a>
         </div>
+    </div>
+    <div class="text-center" *ngIf="!loading">
+      <app-spinner></app-spinner>
     </div>
 </div>
