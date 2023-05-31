@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { OrderModule } from './order/order.module';
 import { UserModule } from './user/user.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,8 @@ import { UserModule } from './user/user.module';
         OrderModule,
         UserModule,
         RouterModule,
+        ToastrModule.forRoot(),
+        
 
     ],
 })

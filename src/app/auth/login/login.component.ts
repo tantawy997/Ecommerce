@@ -9,7 +9,6 @@ import { User } from 'src/app/_Model/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   user:User = new User(0,"","", "","");
   users:User []= [];
   /**

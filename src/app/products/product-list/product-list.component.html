@@ -3,7 +3,7 @@
 <section class="banner">
     <div class="container-fluid product">
 <ng-container *ngFor="let item of ProductList";>
-<div class="card custom-card text-center" style="width: 18rem;">
+<div class="card custom-card text-center box mt-5" style="width: 18rem;">
     <img [src]="item.image" class="product-image" [alt]="item.title">
     <div class="card-body">
       <h4 class="card-title">{{item.category}}</h4>
