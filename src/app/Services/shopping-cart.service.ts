@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Product } from '../_Model/product';
+import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ storage = window.localStorage;
   }
 
   GetCart(){
-    return this.http.get<Product[]>("https://fakestoreapi.com/carts/");
+    return this.http.get<Product[]>(environment.BaseUrl+"/carts/");
   }
 
 

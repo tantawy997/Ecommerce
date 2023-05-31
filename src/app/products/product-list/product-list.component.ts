@@ -1,9 +1,12 @@
+import { CategoryService } from './../../Services/category.service';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
+
+
 
 @Component({
   selector: 'app-product-list',
@@ -11,28 +14,31 @@ import { Product } from 'src/app/_Model/product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  categories:string[]=[]
   ProductList:Product [] = [];
   @Input() productItem!: Product;
-  selectedItem = "1";
+  selectedItem = 1;
   num:number = 0;
   productCount: string[] = ['1', '2', '3', '4', '5'];
 
   productCart:Product = new Product(0, "", 0, "", "", "","0");
-  constructor(public productService:ProductService, public http:HttpClient,public route:Router,public CartServices:ShoppingCartService){
+  constructor(public productService:ProductService, public http:HttpClient,public route:Router,public CartServices:ShoppingCartService,public CategoryService:CategoryService){
   }
 
 // how to create shopping cart in angular ?
-
-
-  ngOnInit(){
-
+loading:boolean =false;
+CartProducts:any []= [];
+ngOnInit(){
+this.getCategories();
 this.productService.getAllProducts().subscribe(a => {
   this.ProductList = a;
-})
+  this.loading =true;
+
+},(e)=>alert(e.error))
   }
 
   selectedChange(value: any) {
+    console.log(value)
     this.selectedItem = value;
   }
 
@@ -47,29 +53,23 @@ this.productService.getAllProducts().subscribe(a => {
     })
   }
 
-  AddToCart(product: Product) {
-
-    const cartProducts: Product[] = this.CartServices.GetShoppingCart();
-    let productInCart = cartProducts.find((ele) => ele.id === product.id);
-    console.log(product.id);
-    if (productInCart) {
-      productInCart.amount = this.selectedItem;
-      productInCart ? this.productService.AddProduct(cartProducts) : null;
-      if (productInCart.id === product.id){
-        cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
-        this.productService.AddProduct(cartProducts);
-      }
-      console.log(productInCart);
+  AddToCart(Prod: any) {
+    if ("cart" in localStorage) {
+      this.CartProducts = JSON.parse(localStorage.getItem("cart")!);
     } else {
-      cartProducts.push(Object.assign(product, { amount: this.selectedItem }));
-      this.productService.AddProduct(cartProducts);
-      const message = `${product.title} has been added to your cart.`;
-      alert(message);
-      console.log(productInCart);
-      console.log(cartProducts);
+      this.CartProducts = []; // Initialize the CartProducts array
     }
-    this.refresh();
+
+    let exist = this.CartProducts.find((i: any) => i.cartItems.id === Prod.id);
+
+    if (exist) {
+      alert("Product is already in your cart");
+    } else {
+      this.CartProducts.push({ cartItems: Prod, quantity: this.selectedItem });
+      localStorage.setItem("cart", JSON.stringify(this.CartProducts));
+    }
   }
+
 
 
   refresh() {
@@ -87,5 +87,33 @@ this.productService.getAllProducts().subscribe(a => {
 
     })
     return this.route.navigateByUrl("/Products/details/"+id);
+  }
+
+
+  GetProductsByCategory(category:any){
+
+    console.log(category.target.value);
+    let value = category.target.value;
+    if(value != "All"){
+      this.productService.GetProductsByCategory(value).subscribe((res:any)=>{
+        this.ProductList = res;
+      })
+    }else{
+      this.productService.getAllProducts().subscribe((res)=>{
+        this.ProductList = res;
+      })
+    }
+
+
+  }
+
+
+  getCategories(){
+    return this.CategoryService.GetAllCategories().subscribe((res)=>{
+      console.log(res);
+      this.categories = res;
+    },(e)=>{
+      alert("there is error loading the categories kindly reload the page")
+    })
   }
 }

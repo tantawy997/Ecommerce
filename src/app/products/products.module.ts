@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductsRoutingModule } from './Products-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,12 +13,13 @@ import { ProductsRoutingModule } from './Products-routing.module';
   declarations: [
     ProductListComponent,
     ProductDetailsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+    SharedModule
   ],
   exports:[ProductListComponent,ProductDetailsComponent,ShoppingCartComponent,RouterModule]
 })

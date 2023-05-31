@@ -1,10 +1,12 @@
 <router-outlet routerLink="/products/cart"></router-outlet>
 
-<section class="banner">
-    <div class="container-fluid product">
+<app-drop-down-list [DataFromParent]="categories" [title]="'categories'" (SelectedData)="GetProductsByCategory($event)"></app-drop-down-list>
+
+<section class="banner" >
+    <div class="container-fluid product" >
 <ng-container *ngFor="let item of ProductList";>
 <div class="card custom-card text-center box mt-5" style="width: 18rem;">
-    <img [src]="item.image" class="product-image" [alt]="item.title">
+    <img [src]="item.image" class="product-image" *ngIf="loading" [alt]="item.title">
     <div class="card-body">
       <h4 class="card-title">{{item.category}}</h4>
         <h6 class="card-title">{{item.title}}</h6>
@@ -25,6 +27,10 @@
     </div>
   </div>
 </ng-container>
+</div>
+
+<div class="text-center w-100" *ngIf="!loading">
+  <app-spinner ></app-spinner>
 </div>
 </section>
 

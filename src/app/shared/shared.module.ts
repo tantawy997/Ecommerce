@@ -1,21 +1,24 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { DropDownListComponent } from './drop-down-list/drop-down-list.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UserModule } from '../user/user.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    DropDownListComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    UserModule,
-    
+
+
   ],
-  exports:[HeaderComponent,RouterModule]
+  exports:[HeaderComponent,RouterModule,DropDownListComponent,SpinnerComponent]
 })
 export class SharedModule { }
