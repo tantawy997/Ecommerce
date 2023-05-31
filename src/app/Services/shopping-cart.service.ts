@@ -24,19 +24,19 @@ storage = window.localStorage;
     this.storage.clear();
   }
 
-  AddToCart(product:Product){
-    return this.http.post<Product>('https://fakestoreapi.com/carts/',product);
+  AddToCart(product:any){
+    return this.http.post<Product>(environment.BaseUrl+'carts/',product);
   }
 
   GetCartItems(){
-    return this.http.get<Product>("https://fakestoreapi.com/carts/" )
+    return this.http.get<Product>(environment.BaseUrl+'carts/' )
   }
 
   increaseQty(qty:number) {
-    return this.http.post("https://fakestoreapi.com/carts/",qty);
+    return this.http.post(environment.BaseUrl+'carts/',qty);
   }
 
   Remove(){
-    this.http.delete<Product>("https://fakestoreapi.com/carts/delete/");
+    this.http.delete<Product>(environment.BaseUrl+'carts/');
   }
 }

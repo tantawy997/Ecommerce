@@ -11,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
         SharedModule,
         ProductsModule,
         RouterModule,
+        CartModule,
         ToastrModule.forRoot(),
 
 

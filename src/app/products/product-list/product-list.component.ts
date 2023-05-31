@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
+import { rate } from 'src/app/_Model/rate';
 
 
 
@@ -20,8 +21,8 @@ export class ProductListComponent implements OnInit {
   selectedItem = 1;
   num:number = 0;
   productCount: string[] = ['1', '2', '3', '4', '5'];
-
-  productCart:Product = new Product(0, "", 0, "", "", "","0");
+  rating:rate= new rate(0,0);
+  productCart:Product = new Product(0, "", 0, "", "", "",this.rating);
   constructor(public productService:ProductService, public http:HttpClient,public route:Router,public CartServices:ShoppingCartService,public CategoryService:CategoryService){
   }
 

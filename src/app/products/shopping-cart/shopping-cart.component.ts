@@ -57,7 +57,6 @@ amount : number = 0;
     localStorage.setItem("Products",JSON.stringify(ProductsAfter));
     location.reload();
     this.calculateTotal();
-
   }
 
   sum(): void {
