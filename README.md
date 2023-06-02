@@ -1,4 +1,4 @@
-# MyApp
+# Ecoomerce Project
 Single Page Application that allows users to view a list of available products to purchase, add them to a shopping cart, and ultimately complete the checkout process.
 
 - View list of products.
