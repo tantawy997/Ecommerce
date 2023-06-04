@@ -5,6 +5,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { ProductsRoutingModule } from './Products-routing.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -17,8 +19,10 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot(),
+
   ],
-  exports:[ProductListComponent,ProductDetailsComponent,RouterModule]
+  exports:[ProductListComponent,ProductDetailsComponent,RouterModule,ProductsRoutingModule]
 })
 export class ProductsModule { }

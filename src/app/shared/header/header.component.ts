@@ -1,6 +1,8 @@
+import { UserService } from 'src/app/Services/user.service';
 import { Component } from '@angular/core';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,13 @@ export class HeaderComponent {
   myStore:string = "myStore";
   flage:boolean = false;
   cartProductList!: Product[];
-  constructor(private ShoppingCart: ShoppingCartService) {}
+  constructor(private ShoppingCart: ShoppingCartService, public UserService:UserService,public router:Router) {
+
+    if (this.UserService.userValue) {
+      this.router.navigate(['/']);
+  }
+
+  }
 
   ngOnInit(): void {
     this.cartProductList = this.ShoppingCart.GetShoppingCart();
@@ -29,10 +37,15 @@ export class HeaderComponent {
   }
 
   login(){
-    if (!localStorage.getItem("username")){
+    if (!localStorage.getItem("user")){
       this.flage = true;
     }else {
       this.flage = false;
     }
   }
+
+
+  logout() {
+    this.UserService.logout();
+}
 }

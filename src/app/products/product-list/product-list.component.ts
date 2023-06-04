@@ -1,3 +1,4 @@
+import { UserService } from './../../Services/user.service';
 import { CategoryService } from './../../Services/category.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +7,8 @@ import { ProductService } from 'src/app/Services/product.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
 import { rate } from 'src/app/_Model/rate';
+import { User } from 'src/app/_Model/user';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -20,10 +23,16 @@ export class ProductListComponent implements OnInit {
   @Input() productItem!: Product;
   selectedItem = 1;
   num:number = 0;
+  user:User|null
+
   productCount: string[] = ['1', '2', '3', '4', '5'];
   rating:rate= new rate(0,0);
   productCart:Product = new Product(0, "", 0, "", "", "",this.rating);
-  constructor(public productService:ProductService, public http:HttpClient,public route:Router,public CartServices:ShoppingCartService,public CategoryService:CategoryService){
+  constructor(public productService:ProductService, public http:HttpClient,public route:Router,
+    public CartServices:ShoppingCartService,public CategoryService:CategoryService,
+    private  UserService:UserService,
+    private toaster:ToastrService){
+this.user = UserService.userValue;
   }
 
 // how to create shopping cart in angular ?
@@ -64,11 +73,14 @@ this.productService.getAllProducts().subscribe(a => {
     let exist = this.CartProducts.find((i: any) => i.cartItems.id === Prod.id);
 
     if (exist) {
-      alert("Product is already in your cart");
+      //alert("Product is already in your cart");
+      this.toaster.warning("Product is already in your cart")
     } else {
       this.CartProducts.push({ cartItems: Prod, quantity: this.selectedItem });
       localStorage.setItem("cart", JSON.stringify(this.CartProducts));
+      this.toaster.success("Product is added to cart");
     }
+
   }
 
 
@@ -87,7 +99,7 @@ this.productService.getAllProducts().subscribe(a => {
 
 
     })
-    return this.route.navigateByUrl("/Products/details/"+id);
+    return this.route.navigateByUrl("details/"+id);
   }
 
 
@@ -114,7 +126,7 @@ this.productService.getAllProducts().subscribe(a => {
       console.log(res);
       this.categories = res;
     },(e)=>{
-      alert("there is error loading the categories kindly reload the page")
+      this.toaster.warning("there is error loading the categories kindly reload the page")
     })
   }
 }

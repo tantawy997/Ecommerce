@@ -1,18 +1,26 @@
 
-import { ProductDetailsComponent } from './products/product-details/product-details.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { CartComponent } from './cart/cart/cart.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './auth/auth.guard';
 
 const routes: Routes =
   [
-  {path:"Products",component:ProductListComponent},
-  {path:"Products/details/:id", component:ProductDetailsComponent},
-  // {path:"Products/cart", component:ShoppingCartComponent},
-  {path:"cart", component:CartComponent},
+  //{path:"Products",component:ProductListComponent ,canActivate:[authGuard]},
+  //{path:"Products/details/:id", component:ProductDetailsComponent, canActivate:[authGuard]},
+  {path:"auth/Register", component:RegisterComponent},
+  {path:"auth/login", component:LoginComponent},
+
+
+  {path:"products",loadChildren:()=> import("../app/products/products.module").then((mod)=> mod.ProductsModule), canActivate:[authGuard]},
+  {path:"cart",loadChildren:()=> import("../app/cart/cart.module").then((mod)=> mod.CartModule), canActivate:[authGuard]},
+    //{path:"cart", component:CartComponent, canActivate:[authGuard]},
+
+  {path:"",loadChildren:()=> import("../app/products/products.module").then((mod)=> mod.ProductsModule), canActivate:[authGuard]},
   {path:'**', redirectTo :"Products",pathMatch:"full"},
+
 ];
 
 @NgModule({

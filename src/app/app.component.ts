@@ -1,3 +1,4 @@
+import { UserService } from './Services/user.service';
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,7 +12,7 @@ export class AppComponent {
 
   flage = false;
 
-constructor(public toastr:ToastrService){
+constructor(public toastr:ToastrService, private UserService:UserService){
 
 }
   showSuccess() {

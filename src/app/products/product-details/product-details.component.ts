@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { ProductService } from 'src/app/Services/product.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
@@ -10,7 +11,7 @@ import { rate } from 'src/app/_Model/rate';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
   rating:rate= new rate(0,0);
@@ -18,8 +19,10 @@ export class ProductDetailsComponent implements OnInit {
   product:Product = new Product(0, "",0,"","","",this.rating,0,'0');
   selectedItem = "1";
   productCount: string[] = ['1', '2', '3', '4', '5'];
+  CartProducts:any []= [];
 
-  constructor(public cart:ShoppingCartService,public http:HttpClient,public Params:ActivatedRoute, public route:Router,public productService:ProductService){
+  constructor(public cart:ShoppingCartService,public http:HttpClient,public Params:ActivatedRoute, public route:Router,public productService:ProductService,
+    private toaster:ToastrService){
   }
 
 
@@ -52,12 +55,24 @@ export class ProductDetailsComponent implements OnInit {
   //   this.ngUnsubscribe.complete();
   // }
 
-  addProductToCart(pro:Product){
+  addProductToCart(Prod:Product){
 
-    this.cart.AddToCart(pro).subscribe(a =>{
-      console.log(a);
-      localStorage.setItem("product", JSON.stringify(a));
-    });
+    if ("cart" in localStorage) {
+      this.CartProducts = JSON.parse(localStorage.getItem("cart")!);
+    } else {
+      this.CartProducts = []; // Initialize the CartProducts array
+    }
+
+    let exist = this.CartProducts.find((i: any) => i.cartItems.id === Prod.id);
+
+    if (exist) {
+      //alert("Product is already in your cart");
+      this.toaster.warning("Product is already in your cart")
+    } else {
+      this.CartProducts.push({ cartItems: Prod, quantity: this.selectedItem });
+      localStorage.setItem("cart", JSON.stringify(this.CartProducts));
+      this.toaster.success("Product is added to cart");
+    }
   }
 
 }
