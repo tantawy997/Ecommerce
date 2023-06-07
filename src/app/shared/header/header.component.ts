@@ -16,36 +16,27 @@ export class HeaderComponent {
   cartProductList!: Product[];
   constructor(private ShoppingCart: ShoppingCartService, public UserService:UserService,public router:Router) {
 
-    if (this.UserService.userValue) {
+    if (this.UserService.user) {
       this.router.navigate(['/']);
   }
 
   }
 
   ngOnInit(): void {
-    this.cartProductList = this.ShoppingCart.GetShoppingCart();
-    this.calculate(this.cartProductList);
+    //this.cartProductList = this.ShoppingCart.GetShoppingCart();
+    //this.calculate(this.cartProductList);
   }
 
-  calculate(cart: Product[]) {
-    let sum = 0;
-    cart.forEach((item) => {
-      sum += Number(item.amount);
-    });
-    const ele = document.getElementById('cartAmount') as HTMLElement;
-    ele.innerHTML = sum.toString();
-  }
+
 
   login(){
-    if (!localStorage.getItem("user")){
-      this.flage = true;
-    }else {
-      this.flage = false;
-    }
+   return this.UserService.logout();
   }
 
 
   logout() {
     this.UserService.logout();
 }
+
+
 }

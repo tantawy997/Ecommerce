@@ -1,0 +1,14 @@
+
+
+
+
+.link-button-custom{
+  text-decoration: none;
+  color: white;
+}
+
+.flex-custom{
+  display: flex;
+  justify-content: space-between;
+
+}

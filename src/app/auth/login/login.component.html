@@ -4,11 +4,11 @@
 
 
 
-<form [formGroup]="SignIn" (ngSubmit)="onSubmit()" style="margin-left: 30%;"  >
+<form [formGroup]="SignIn" (ngSubmit)="onSubmit()" style="margin-left: 30%; padding-top: 10%;"  >
 
-  <div class="mb-3 form-group w-50 text-center" >
-    <label for="username" class="form-label">username</label>
-    <input type="text" class="form-control " formControlName="username" id="username">
+  <div class="mb-3 form-group w-50" >
+    <label for="email" class="form-label">email</label>
+    <input type="text" class="form-control " formControlName="email" id="email">
     <div id="username" class="form-text">We'll never share your email with anyone else.</div>
   </div>
 
@@ -17,6 +17,7 @@
     <label for="password"   class="form-label">Password</label>
     <input type="password" required formControlName="password"  class="form-control" id="exampleInputPassword1">
   </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
-  <a routerLink="../register" class="btn btn-link">Register</a>
+
 </form>

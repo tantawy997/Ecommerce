@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { first } from 'rxjs';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/_Model/user';
 
@@ -12,7 +11,7 @@ import { User } from 'src/app/_Model/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  user:User = new User(0,"","", "","","");
+  user ={} as User;
   users:User []= [];
   loading = false;
   submitted = false;
@@ -20,9 +19,7 @@ export class LoginComponent implements OnInit{
   constructor(public router:Router,
     public ActiveParams:ActivatedRoute,
     private toaster:ToastrService,
-    private formBuilder: FormBuilder,
-    
-    public userService:UserService) {
+    public UserService:UserService) {
       this.SignIn = this.CreateFormsGroup();
     }
 
@@ -56,7 +53,7 @@ export class LoginComponent implements OnInit{
   }
   CreateFormsGroup(): FormGroup {
     return new FormGroup({
-      username: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required,Validators.email]),
       password:new FormControl("", [Validators.required, Validators.maxLength(7)])
     })
   }
@@ -67,27 +64,19 @@ form!: FormGroup;
     this.submitted = true;
      // stop here if form is invalid
 
-     console.log(this.SignIn.value);
 
-     if (this.SignIn.invalid) {
-      return;
-  }
-  this.loading = true;
+  console.log(this.SignIn.value);
 
-    this.userService.Login(this.SignIn.value.username,this.SignIn.value.password)
-    .pipe(first())
-    .subscribe((res)=>{
-        this.toaster.success("success", "login success")
-        const returnUrl = this.ActiveParams.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigateByUrl(returnUrl);
-    },
-    (e)=>{
-      this.loading = false;
-      console.log(e.message);
-      this.toaster.error(e.message)
-
-    })
+  //this.loading = true;
+   return this.UserService.LoginUser(this.SignIn.value.email,this.SignIn.value.password);
   }
 
 
+  GoToRegister(){
+    this.router.navigateByUrl("auth/Register");
+  }
+
+  forgetPassword(){
+    this.router.navigateByUrl("auth/forgot-password");
+  }
 }

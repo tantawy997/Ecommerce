@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
     public CartServices:ShoppingCartService,public CategoryService:CategoryService,
     private  UserService:UserService,
     private toaster:ToastrService){
-this.user = UserService.userValue;
+this.user = UserService.user;
   }
 
 // how to create shopping cart in angular ?

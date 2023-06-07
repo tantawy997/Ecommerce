@@ -4,7 +4,6 @@ import { UserService } from './../../Services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +17,7 @@ export class RegisterComponent implements OnInit {
 
   SignIn:FormGroup =new FormGroup({})
 
-  user:User = new User(0,"","","","","")
+  user = {} as User;
 
   constructor(public UserService:UserService, public router:Router, private activeRoute:ActivatedRoute,private ToastrService:ToastrService){
   }
@@ -27,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
   CreateFormsGroup(): FormGroup {
     return new FormGroup({
-      name: new FormControl("", [Validators.required,Validators.minLength(3)]),
+      displayName: new FormControl("", [Validators.required,Validators.minLength(3)]),
       email: new FormControl("", [Validators.required,Validators.email]),
       password:new FormControl("", [Validators.required, Validators.maxLength(7)])
     })
@@ -35,19 +34,13 @@ export class RegisterComponent implements OnInit {
 
 
   onSubmit(){
-    this.UserService.Register(this.SignIn.value)
-    .pipe(first())
-    .subscribe((res)=>{
-      console.log(res);
-      this.ToastrService.success("registration was successful")
-      this.router.navigate(['auth/login']);
-    },
-    (e)=>{
+    console.log(this.SignIn.value);
 
-      console.log(e.message);
-      this.loading = false;
-      this.ToastrService.error(e.message);
+    this.UserService.Register(this.SignIn.value.email, this.SignIn.value.password);
 
-    })
+  }
+
+  GoToLogin(){
+    this.router.navigateByUrl("auth/login");
   }
 }

@@ -1,11 +1,22 @@
 import { Injectable, inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn , ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { UserService } from '../Services/user.service';
-
-@Injectable()
+//import { Observable } from 'rxjs';
+@Injectable({
+  providedIn: 'root'
+})
 class UserToken {
+
 }
+
+
 export const authGuard: CanActivateFn = (route, state) => {
-  return inject(UserService).canActivate(inject(UserToken), route.params);
+  if(
+    inject(UserService).isLoggedIn !== true
+  ){
+    inject(Router).navigateByUrl('auth/login');
+  }
+
+  return true;
 
 };

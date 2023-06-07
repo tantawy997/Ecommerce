@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { authGuard } from './auth/auth.guard';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 
 const routes: Routes =
   [
@@ -12,9 +14,11 @@ const routes: Routes =
   //{path:"Products/details/:id", component:ProductDetailsComponent, canActivate:[authGuard]},
   {path:"auth/Register", component:RegisterComponent},
   {path:"auth/login", component:LoginComponent},
+  { path: 'auth/forgot-password', component: ForgotPasswordComponent },
+  { path: 'auth/verify-email-address', component: VerifyEmailComponent },
 
 
-  {path:"products",loadChildren:()=> import("../app/products/products.module").then((mod)=> mod.ProductsModule), canActivate:[authGuard]},
+  {path:"products",loadChildren:()=> import("../app/products/products.module").then((mod)=> mod.ProductsModule),canActivate:[authGuard]},
   {path:"cart",loadChildren:()=> import("../app/cart/cart.module").then((mod)=> mod.CartModule), canActivate:[authGuard]},
     //{path:"cart", component:CartComponent, canActivate:[authGuard]},
 

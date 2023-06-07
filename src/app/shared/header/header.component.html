@@ -24,13 +24,13 @@
           <a routerLink="cart"  class="nav-link">Cart<i class="fa fa-shopping-cart"></i> <span  id="cartAmount" #cartAmount>{{0}}</span></a>
         </li>
         <li class="navbar-item">
-          <a routerLink="auth/login" *ngIf="!flage" class="nav-link" >login</a>
+          <a routerLink="auth/login" *ngIf="!UserService.isLoggedIn" class="nav-link" >login</a>
         </li>
         <li class="navbar-item">
-          <a routerLink="auth/Register"  class="nav-link" >Register</a>
+          <a routerLink="auth/Register" *ngIf="!UserService.isLoggedIn" class="nav-link" >Register</a>
         </li>
         <li class="navbar-item">
-          <a   (click)="logout()" *ngIf="flage" class="nav-link" >logout</a>
+          <a type="button"  (click)="logout()" *ngIf="UserService.isLoggedIn" class="nav-link" >logout</a>
         </li>
       </ul>
     </div>
