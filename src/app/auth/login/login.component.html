@@ -17,7 +17,20 @@
     <label for="password"   class="form-label">Password</label>
     <input type="password" required formControlName="password"  class="form-control" id="exampleInputPassword1">
   </div>
+  <div class="flex-custom mb-3 form-group w-50">
+    <button type="submit" class="btn btn-primary">Submit</button>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-info" type="button">
+      <a (click)="GoToRegister()" class="link-button-custom" >Register</a>
+    </button>
 
+    <button class="btn btn-link" type="button">
+    <a (click)="forgetPassword()" >Forgot Password?</a>
+    </button>
+
+    <button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">
+      Google
+    </button>
+
+  </div>
 </form>

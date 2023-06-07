@@ -71,7 +71,10 @@ form!: FormGroup;
    return this.UserService.LoginUser(this.SignIn.value.email,this.SignIn.value.password);
   }
 
+  loginWithGoogle(){
 
+    this.UserService.SignInWithGoogle();
+  }
   GoToRegister(){
     this.router.navigateByUrl("auth/Register");
   }

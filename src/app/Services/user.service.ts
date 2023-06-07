@@ -51,11 +51,14 @@ public user: any;
   }
 
   SignInWithGoogle(){
-    return this.AuthLogin(new GoogleAuthProvider()).then((res: any) => {
+    return this.AuthLogin(new GoogleAuthProvider()).then((res) => {
+      console.log(res);
       this.router.navigateByUrl('products');
 
     });
   }
+
+
 
  public LoginUser(email: string, password: string)
   {
