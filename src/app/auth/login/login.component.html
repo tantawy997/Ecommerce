@@ -1,10 +1,8 @@
 
 
+<section class="container">
 
-
-
-
-<form [formGroup]="SignIn" (ngSubmit)="onSubmit()" style="margin-left: 30%; padding-top: 10%;"  >
+<form [formGroup]="SignIn" (ngSubmit)="onSubmit()" style="margin-left:25%; padding-top: 10%;"  >
 
   <div class="mb-3 form-group w-50" >
     <label for="email" class="form-label">email</label>
@@ -27,15 +25,16 @@
     <button class="btn btn-link" type="button">
     <a (click)="forgetPassword()" >Forgot Password?</a>
     </button>
-
-    <div class="google-btn">
-      <div class="google-icon-wrapper">
-        <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-      </div>
-    <a  (click)="loginWithGoogle()" mat-raised-button class="google-login-btn ">
-      Sign In With Google
-    </a>
+  </div>
+<br>
+  <div class="google-btn" style="margin-left: 15%;">
+    <div class="google-icon-wrapper">
+      <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
     </div>
-
+  <a  (click)="loginWithGoogle()" mat-raised-button class="google-login-btn ">
+    Sign In With Google
+  </a>
   </div>
 </form>
+
+</section>
