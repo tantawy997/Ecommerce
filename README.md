@@ -8,6 +8,8 @@ Single Page Application that allows users to view a list of available products t
 - Delete product from cart.
 - Checkout products in cart.
 - Calculate cart total in cart.
+- login and register integration with firebase
+
 
 Product list and the home page
 ![image](https://user-images.githubusercontent.com/86706735/208268239-129e8440-3a1c-4511-aa9b-ba23a826ccb2.png)
