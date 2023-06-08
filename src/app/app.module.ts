@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { UserService } from './Services/user.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -38,6 +40,8 @@ import { UserService } from './Services/user.service';
         AngularFirestoreModule,
         AngularFireStorageModule,
         AngularFireDatabaseModule,
+        FontAwesomeModule,
+        NgbModule
     ],
 })
 export class AppModule { }
