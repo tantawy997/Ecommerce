@@ -11,9 +11,16 @@
 .flex-custom{
   display: flex;
   justify-content: space-between;
-
 }
-
+.custom-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 .google-btn {
   width: 184px;
   height: 42px;
@@ -51,6 +58,26 @@
   }
   &:active {
     background: #1669F2;
+  }
+
+  @media screen and (max-width: 480px) {
+    .custom-button{
+      font-size: 3px;
+      padding: 1px 1px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-button{
+      font-size: 10px;
+      padding: 8px 16px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .custom-button{
+      font-size: 12px;
+      }
   }
 
 

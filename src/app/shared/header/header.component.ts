@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Product } from 'src/app/_Model/product';
 import { Router } from '@angular/router';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   amount:number = 0;
+  bars = faBars;
   myStore:string = "myStore";
   flage:boolean = false;
   cartProductList!: Product[];

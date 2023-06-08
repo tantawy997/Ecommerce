@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { AlertComponent } from './alert/alert.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -18,8 +20,8 @@ import { AlertComponent } from './alert/alert.component';
   imports: [
     CommonModule,
     RouterModule,
-
-
+    FontAwesomeModule,
+    
   ],
   exports:[HeaderComponent,RouterModule,DropDownListComponent,SpinnerComponent]
 })

@@ -9,30 +9,32 @@
     </div>
 </header> -->
 
-<header class="header navbar-dark bg-dark">
-<nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" href="#">{{myStore}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink='products' routerLinkActive="router-link-active" >Products</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="cart"  class="nav-link">Cart<i class="fa fa-shopping-cart"></i> <span  id="cartAmount" #cartAmount>{{0}}</span></a>
-        </li>
-        <li class="navbar-item">
-          <a routerLink="auth/login" *ngIf="!UserService.isLoggedIn" class="nav-link" >login</a>
-        </li>
-        <li class="navbar-item">
-          <a routerLink="auth/Register" *ngIf="!UserService.isLoggedIn" class="nav-link" >Register</a>
-        </li>
-        <li class="navbar-item">
-          <a type="button"  (click)="logout()" *ngIf="UserService.isLoggedIn" class="nav-link" >logout</a>
-        </li>
-      </ul>
+<!-- <header class="header navbar-dark bg-dark"> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav" >
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">{{ myStore }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <fa-icon [icon]="bars"></fa-icon>
+      </button>
+      <div class="flex-grow-1 collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="products" routerLinkActive="router-link-active">Products</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="cart" class="nav-link">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="auth/login" *ngIf="!UserService.isLoggedIn" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="auth/Register" *ngIf="!UserService.isLoggedIn" class="nav-link">Register</a>
+          </li>
+          <li class="nav-item">
+            <a type="button" (click)="logout()" *ngIf="UserService.isLoggedIn" class="nav-link">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-</header>
+

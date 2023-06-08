@@ -1,33 +1,33 @@
 
 
-<section class="container">
+<section class="container-fluid">
 
-<form [formGroup]="SignIn" (ngSubmit)="onSubmit()" style="margin-left:25%; padding-top: 10%;"  >
+<form [formGroup]="SignIn" (ngSubmit)="onSubmit()"  style="margin-left: 19%; padding-top: 10%;"  >
 
-  <div class="mb-3 form-group w-50" >
+  <div class="mb-3 form-group w-75" >
     <label for="email" class="form-label">email</label>
     <input type="text" class="form-control " formControlName="email" id="email">
     <div id="username" class="form-text">We'll never share your email with anyone else.</div>
   </div>
 
 
-  <div class="mb-3 w-50 ">
+  <div class="mb-3 w-75 ">
     <label for="password"   class="form-label">Password</label>
     <input type="password" required formControlName="password"  class="form-control" id="exampleInputPassword1">
   </div>
-  <div class="flex-custom mb-3 form-group w-50">
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="flex-custom mb-3 form-group w-75">
+    <button type="submit" class="btn btn-primary custom-button">Submit</button>
 
-    <button class="btn btn-info" type="button">
+    <button class="btn btn-info custom-button" type="button">
       <a (click)="GoToRegister()" class="link-button-custom" >Register</a>
     </button>
 
-    <button class="btn btn-link" type="button">
+    <button class="btn btn-link custom-button"  type="button">
     <a (click)="forgetPassword()" >Forgot Password?</a>
     </button>
   </div>
 <br>
-  <div class="google-btn" style="margin-left: 15%;">
+  <div class="google-btn" style="margin-left: 10%;">
     <div class="google-icon-wrapper">
       <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
     </div>
@@ -36,5 +36,4 @@
   </a>
   </div>
 </form>
-
 </section>
